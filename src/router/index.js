@@ -3,8 +3,9 @@ import HomeView from '../views/HomeView.vue'
 import AdminView from '../views/admin/AdminView.vue'
 import LoginView from '../views/auth/LoginView.vue'
 import authUseStore from '../stores/authStore'
-import AdminLayout from '../components/AdminLayout.vue'
+import AdminLayout from '../components/layouts/AdminLayout.vue'
 import NewPhraseView from '../views/admin/NewPhraseView.vue'
+import PhrasesListView from '../views/admin/PhrasesListView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -22,9 +23,7 @@ const router = createRouter({
       children: [
         { path: '/admin', name: 'Admin', component: AdminView },
         { path: '/admin/new', name: 'NewPhrase', component: NewPhraseView },
-/*      { path: '/surveys', name: 'Surveys', component: SurveysView },
-        { path: '/surveys/create', name: 'SurveyCreate', component: SurveysInternalView },
-        { path: '/surveys/:id', name: 'SurveyView', component: SurveysInternalView } */
+        { path: '/admin/list', name: 'PhrasesList', component: PhrasesListView },
       ]
     },
     {

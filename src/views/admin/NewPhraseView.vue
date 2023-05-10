@@ -1,7 +1,7 @@
 <template>
     <h1 class="text-black text-3xl font-bold text-center mb-8">New Phrase</h1>
 
-    <a-form class="" :model="formState" v-bind="layout" :validate-messages="validateMessages" @finish="newPhrase">
+    <a-form  class="" :model="formState" v-bind="layout" :validate-messages="validateMessages" @finish="newPhrase">
         <a-form-item :name="['phrase', 'phrase']" label="Phrase" :rules="[{ required: true }]">
             <a-input v-model:value="formState.phrase.phrase" />
         </a-form-item>
@@ -25,6 +25,18 @@
                 <a-select-option value="happy">Happy</a-select-option>
             </a-select>
         </a-form-item>
+        <a-form-item :name="['phrase', 'status']" label="Status" :rules="[{ required: true }]">
+            <a-select v-model:value="formState.phrase.status" placeholder="Please select status">
+                <a-select-option value="active">Active</a-select-option>
+                <a-select-option value="pending">Pending </a-select-option>
+            </a-select>
+        </a-form-item>
+        <a-form-item :name="['phrase', 'language']" label="Language" :rules="[{ required: true }]">
+            <a-select v-model:value="formState.phrase.language" placeholder="Please select language">
+                <a-select-option value="en">English</a-select-option>
+                <a-select-option value="es">Spanish </a-select-option>
+            </a-select>
+        </a-form-item>
         <a-form-item :wrapper-col="{ ...layout.wrapperCol, offset: 6 }">
             <a-button type="primary" html-type="submit">Submit</a-button>
         </a-form-item>
@@ -41,10 +53,10 @@ const store = phraseUseStore();
 const layout = {
     labelCol: {
         sm: { span: 6 },
-        md: { span: 2 },
+        lg: { span: 2 },
     },
     wrapperCol: {
-        md: { span: 10 },
+        lg: { span: 10 },
         sm: { span: 14 }
     },
 };
@@ -57,6 +69,8 @@ const formState = ref({
         source: undefined,
         author: '',
         category: undefined,
+        status: undefined,
+        language: undefined
     },
 });
 
@@ -73,6 +87,8 @@ const newPhrase = async () => {
                 source: undefined,
                 author: '',
                 category: undefined,
+                status: undefined,
+                language: undefined
             };
         }
 

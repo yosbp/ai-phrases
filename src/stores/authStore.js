@@ -1,6 +1,8 @@
 import { defineStore } from 'pinia'
-import axiosClient from '../axios'
+
 import router from '../router'
+import axios from 'axios'
+import setAuthHeader from '../utils/axios'
 
 const authUseStore = defineStore('auth', {
   state: () => {
@@ -11,11 +13,11 @@ const authUseStore = defineStore('auth', {
 
   actions: {
     login(data) {
-      return axiosClient
-        .post('/login', data)
+        return axios.post('http://127.0.0.1:8000/api/login', data)
         .then((response) => {
           this.token = response.data.token
           localStorage.setItem('token', response.data.token)
+          setAuthHeader(response.data.token)
           return response.data
         })
         .catch((error) => {
@@ -26,6 +28,7 @@ const authUseStore = defineStore('auth', {
     logout() {
         this.token = null
         localStorage.removeItem('token')
+        setAuthHeader()
         router.push({ name: "Login" })
     }
   }
