@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
 
-const base_url = 'http://127.0.0.1:8000/api'
+const base_url = import.meta.env.VITE_URI
 
 const phraseUseStore = defineStore('phrases', {
   state: () => {
@@ -40,6 +40,12 @@ const phraseUseStore = defineStore('phrases', {
 
     deletePhrase(id) {
       return axios.delete(`${base_url}/phrase/${id}`).then((response) => {
+        return response.data
+      })
+    },
+
+    dashboardData() {
+      return axios.get(`${base_url}/dashboard`).then((response) => {
         return response.data
       })
     }

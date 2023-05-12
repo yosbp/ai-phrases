@@ -35,7 +35,7 @@ const column = [{
     title: 'Phrase',
     dataIndex: 'phrase',
     key: 'phrase',
-    width: '30%',
+    width: '500px',
 }, {
     title: 'Source',
     dataIndex: 'source',
@@ -62,6 +62,7 @@ const column = [{
     title: 'Language',
     dataIndex: 'language',
     key: 'language',
+    sorter: (a, b) => a.language.localeCompare(b.language)
 }, {
     title: 'Action',
     key: 'action',
@@ -84,3 +85,9 @@ const hideModal = () => {
 }
 
 </script>
+
+<style>
+.ant-table {
+    min-width: 1000px;
+}
+</style>

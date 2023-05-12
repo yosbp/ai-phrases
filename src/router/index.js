@@ -6,6 +6,11 @@ import authUseStore from '../stores/authStore'
 import AdminLayout from '../components/layouts/AdminLayout.vue'
 import NewPhraseView from '../views/admin/NewPhraseView.vue'
 import PhrasesListView from '../views/admin/PhrasesListView.vue'
+import DocsView from '../views/docs/DocsView.vue'
+import DocsLayout from '../components/layouts/DocsLayout.vue'
+import GetMultipleView from '../views/docs/GetMultipleView.vue'
+import GetSimpleView from '../views/docs/GetSimpleView.vue'
+import GetLanguageView from '../views/docs/GetLanguageView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,6 +19,18 @@ const router = createRouter({
       path: '/',
       name: 'Home',
       component: HomeView
+    },
+    {
+      path: '/api',
+      redirect: '/docs',
+      component: DocsLayout,
+      children: [
+        { path: '/docs', name: 'Docs', component: DocsView },
+        { path: '/endpoints', name: 'Endpoints', redirect: '/endpoints/single' },
+        { path: '/endpoints/single', name: 'SimplePhrase', component: GetSimpleView },
+        { path: '/endpoints/multiple', name: 'MultiplePhrases', component: GetMultipleView },
+        { path: '/endpoints/language', name: 'LanguagePhrases', component: GetLanguageView },
+      ]
     },
     {
       path: '/admin',
@@ -27,8 +44,7 @@ const router = createRouter({
       ]
     },
     {
-      path: '/auth',
-      redirect: '/login',
+      path: '/login',
       name: 'Auth',
       meta: {isGuest: true},
       children: [
