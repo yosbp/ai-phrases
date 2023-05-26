@@ -14,7 +14,7 @@
             class="mt-8 prose prose-slate max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-lead:text-slate-500 prose-a:font-semibold prose-a:underline prose-pre:bg-slate-900">
             <!-- Content -->
             <div class="bg-gray-100">
-                <div class="mx-5 bg-gray-800 shadow-2xl rounded-lg overflow-hidden">
+                <div class="mx-5 bg-gray-800 shadow-2xl rounded-lg overflow-auto">
                     <div id="code-area" class="py-4 px-4 mt-1 text-white text-xl">
                         <div class="mb-2">
                             <span>
